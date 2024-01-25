@@ -7,7 +7,7 @@ export default function HomePage() {
       <h1>
         <span> 🌏 </span>Hello World
       </h1>
-      <Link href="./pages/cities/index.js">Index of cities of the World</Link>
+      <Link href="./cities">Index of cities of the World</Link>
     </>
   );
 }
