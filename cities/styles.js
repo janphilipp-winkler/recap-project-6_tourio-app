@@ -11,11 +11,21 @@ export default createGlobalStyle`
 
   :root {
     --primary-color:#FA8072;
-    --secondary-color: #FFA07A
+    --secondary-color: #FFA07A;
+    --tertiary-color: #A5A5A5;
   }
 
   body {
     margin: 0;
     font-family: ${workSans.style.fontFamily};
+  
+
+    h1 {
+      font-weight: 500;
+    }
+
+    h2 { font-weight: 400;}
+
+   
   }
 `;
