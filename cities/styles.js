@@ -7,6 +7,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  :root {
+    --primary-color:#FA8072;
+    --secondary-color: #FFA07A
+  }
+
   body {
     margin: 0;
     font-family: system-ui;

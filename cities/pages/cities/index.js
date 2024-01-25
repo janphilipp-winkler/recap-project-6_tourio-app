@@ -1,6 +1,7 @@
 import { cities } from "@/lib/data";
+import styled from "styled-components";
 import Head from "next/head";
-import Link from "next/link";
+import { StyledLink } from "@/componenten/styledlink/styledlink";
 
 export default function Cities() {
   return (
@@ -9,15 +10,19 @@ export default function Cities() {
         <title>Cities of the World</title>
       </Head>
       <h1>Cities of The World</h1>
-      <ul>
+      <StyledUl>
         {cities.map((city) => {
           return (
-            <li key={city.id}>
-              <Link href={`cities/${city.slug}`}>{city.name}</Link>
-            </li>
+            <StyledUl key={city.id}>
+              <StyledLink href={`cities/${city.slug}`}>{city.name}</StyledLink>
+            </StyledUl>
           );
         })}
-      </ul>
+      </StyledUl>
     </>
   );
 }
+
+const StyledUl = styled.ul`
+  text-decoration: none;
+`;

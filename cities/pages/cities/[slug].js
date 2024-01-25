@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { cities } from "@/lib/data";
 import Head from "next/head";
+import { StyledLink } from "@/componenten/styledlink/styledlink";
 
 export default function Cities() {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function Cities() {
       <h2>Population: 👯‍♀️ {population}</h2>
       <p>{description}</p>
 
-      <Link href="/cities"> Back to Index of Cities </Link>
+      <StyledLink href="/cities"> Back to Index of Cities </StyledLink>
     </>
   );
 }
