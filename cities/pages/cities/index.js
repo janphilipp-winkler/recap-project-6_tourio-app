@@ -11,7 +11,11 @@ export default function Cities() {
       <h1>Cities of The World</h1>
       <ul>
         {cities.map((city) => {
-          return <li key={city.id}>{city.name}</li>;
+          return (
+            <li key={city.id}>
+              <Link href={`cities/${city.slug}`}>{city.name}</Link>
+            </li>
+          );
         })}
       </ul>
     </>
