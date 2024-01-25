@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { cities } from "@/lib/data";
 import Head from "next/head";
-import { StyledLink } from "@/componenten/styledlink/styledlink";
+import { StyledLink } from "@/components/StyledLink/index";
 
 export default function Cities() {
   const router = useRouter();

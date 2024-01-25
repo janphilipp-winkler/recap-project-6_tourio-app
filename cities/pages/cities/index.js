@@ -1,7 +1,7 @@
 import { cities } from "@/lib/data";
 import styled from "styled-components";
 import Head from "next/head";
-import { StyledLink } from "@/componenten/styledlink/styledlink";
+import { StyledLink } from "@/components/StyledLink/index";
 
 export default function Cities() {
   return (
@@ -19,6 +19,9 @@ export default function Cities() {
           );
         })}
       </StyledUl>
+      <StyledLink href="/">
+        <span>← </span> Back to home
+      </StyledLink>
     </>
   );
 }
