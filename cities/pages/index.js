@@ -1,7 +1,13 @@
+import Head from "next/head";
+import Link from "next/link";
+
 export default function HomePage() {
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <>
+      <h1>
+        <span> 🌏 </span>Hello World
+      </h1>
+      <Link href="./pages/cities/index.js">Index of cities of the World</Link>
+    </>
   );
 }
