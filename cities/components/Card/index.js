@@ -1,7 +1,7 @@
-// import styled from "styled-components";
+import styled from "styled-components";
 
-// export const Card = styled.div`
-//   border-style: solid;
-//   border-width: 1px;
-//   border-color: var(--tertiary-color);
-// `;
+export const Card = styled.div`
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--tertiary-color);
+`;
