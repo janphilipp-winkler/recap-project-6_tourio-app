@@ -1,11 +1,24 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Link from "next/link";
 
 export default function DetailPage() {
   const router = useRouter();
-  const { data: product } = useSWR(`/api/products/${router.query.id}`);
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useSWR(`/api/products/${router.query.id}`);
 
-  if (!product) return <div>Loading...</div>;
+  if (isLoading) return <div>Loading...</div>;
+  if (error)
+    return (
+      <div>
+        <Link href="/products">
+          We can not find your product! Please, check this out
+        </Link>
+      </div>
+    );
 
   const { name, description, price } = product;
 
