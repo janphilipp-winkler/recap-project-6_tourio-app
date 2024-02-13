@@ -34,6 +34,18 @@ export default function Product() {
     event.target.reset();
   }
 
+  async function handleDeleteProduct() {
+    const response = await fetch(`/api/products/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      await response.json();
+      router.push("/");
+    } else {
+      console.error("Failed to delete product:", response.status);
+    }
+  }
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
@@ -59,6 +71,9 @@ export default function Product() {
         }}
       >
         Edit
+      </StyledButton>
+      <StyledButton type="button" onClick={() => handleDeleteProduct(id)}>
+        Delete
       </StyledButton>
     </ProductCard>
   );
