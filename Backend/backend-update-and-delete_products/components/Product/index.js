@@ -8,7 +8,27 @@ export default function Product() {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data, isLoading } = useSWR(`/api/products/${id}`);
+  const { data, isLoading, mutate } = useSWR(id ? `/api/products/${id}` : null);
+
+  async function handleEditProduct(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const productData = Object.fromEntries(formData);
+
+    const response = await fetch(`/api/products/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    });
+
+    if (response.ok) {
+      mutate();
+    }
+    event.target.reset();
+  }
 
   if (isLoading) {
     return <h1>Loading...</h1>;
