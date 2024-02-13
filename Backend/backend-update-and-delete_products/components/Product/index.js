@@ -3,10 +3,14 @@ import { useRouter } from "next/router";
 import { ProductCard } from "./Product.styled";
 import { StyledLink } from "../Link/Link.styled";
 import Comments from "../Comments";
+import { StyledButton } from "../Button/Button.styled";
+import { useState } from "react";
+import ProductForm from "../ProductForm";
 
 export default function Product() {
   const router = useRouter();
   const { id } = router.query;
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const { data, isLoading, mutate } = useSWR(id ? `/api/products/${id}` : null);
 
@@ -40,6 +44,7 @@ export default function Product() {
 
   return (
     <ProductCard>
+      {isEditMode && <ProductForm onSubmit={handleEditProduct} />}
       <h2>{data.name}</h2>
       <p>Description: {data.description}</p>
       <p>
@@ -47,6 +52,14 @@ export default function Product() {
       </p>
       {data.reviews.length > 0 && <Comments reviews={data.reviews} />}
       <StyledLink href="/">Back to all</StyledLink>
+      <StyledButton
+        type="button"
+        onClick={() => {
+          setIsEditMode(!isEditMode);
+        }}
+      >
+        Edit
+      </StyledButton>
     </ProductCard>
   );
 }
