@@ -18,9 +18,14 @@ export default function ProductForm() {
       },
       body: JSON.stringify(productData),
     });
-    if (response.ok) {
-      mutate();
+
+    if (!response.ok) {
+      console.error(response.status);
+      return;
     }
+
+    mutate();
+    event.target.reset();
   }
 
   return (
@@ -33,10 +38,6 @@ export default function ProductForm() {
       <StyledLabel htmlFor="description">
         Description:
         <input type="text" id="description" name="description" />
-      </StyledLabel>
-      <StyledLabel htmlFor="origin">
-        Origin:
-        <input type="text" id="origin" name="origin" />
       </StyledLabel>
       <StyledLabel htmlFor="price">
         Price:
