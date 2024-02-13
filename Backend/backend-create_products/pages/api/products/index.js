@@ -10,13 +10,13 @@ export default async function handler(request, response) {
 
       response.status(201).json(newProduct);
     } catch (error) {
-      console.log("Check", error);
       response.status(400).json({ error: error.message });
     }
   }
 
   if (request.method === "GET") {
     const products = await Product.find();
+
     return response.status(200).json(products);
   }
 }
