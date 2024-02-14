@@ -27,4 +27,14 @@ export default async function handler(request, response) {
       return response.status(400).json({ message: error.message });
     }
   }
+
+  if (request.method === "DELETE") {
+    try {
+      await Sight.findByIdAndDelete(id);
+
+      return response.status(200).json({ message: "Sight deleted" });
+    } catch (error) {
+      return response.status(400).json({ message: error.message });
+    }
+  }
 }
