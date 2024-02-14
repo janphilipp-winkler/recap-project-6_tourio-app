@@ -12,4 +12,17 @@ export default async function handler(request, response) {
       return response.status(400).json({ message: error.message });
     }
   }
+
+  if (request.method === "POST") {
+    try {
+      const sightData = request.body;
+      const sight = new Sight(sightData);
+
+      await sight.save();
+
+      return response.status(201).json({ message: "Sight created" });
+    } catch (error) {
+      return response.status(400).json({ message: error.message });
+    }
+  }
 }
