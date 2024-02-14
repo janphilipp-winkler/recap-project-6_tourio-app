@@ -56,7 +56,9 @@ export default function Product() {
 
   return (
     <ProductCard>
-      {isEditMode && <ProductForm onSubmit={handleEditProduct} />}
+      {isEditMode && (
+        <ProductForm isEditMode={isEditMode} onSubmit={handleEditProduct} />
+      )}
       <h2>{data.name}</h2>
       <p>Description: {data.description}</p>
       <p>
