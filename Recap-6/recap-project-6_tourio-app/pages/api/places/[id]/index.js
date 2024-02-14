@@ -7,10 +7,10 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     try {
+      const sight = await Sight.findById(id);
       if (!sight) {
         return response.status(404).json({ status: "Not found" });
       }
-      const sight = await Sight.findById(id);
       return response.status(200).json(sight);
     } catch (error) {
       return response.status(400).json({ message: error.message });
