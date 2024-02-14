@@ -16,4 +16,15 @@ export default async function handler(request, response) {
       return response.status(400).json({ message: error.message });
     }
   }
+
+  if (request.method === "PATCH") {
+    try {
+      const updatedSight = request.body;
+      await Sight.findByIdAndUpdate(id, updatedSight);
+
+      return response.status(200).json(updatedSight);
+    } catch (error) {
+      return response.status(400).json({ message: error.message });
+    }
+  }
 }
